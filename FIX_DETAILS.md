@@ -2,6 +2,10 @@
 
 **GitHub Repository**: [IsmailMabrouki/New_devs_App](https://github.com/IsmailMabrouki/New_devs_App)
 
+
+> [!NOTE]
+> **Out of Scope**: The fixes implemented for database connection pooling (`DatabasePool` singleton, `QueuePool` resolution) and backend configuration stability are out of the official assignment scope. These were implemented for personal verification to ensure a stable testing environment.
+
 This document provides a detailed explanation of the bugs identified in the Property Revenue Dashboard and the proposed implementation for fixing them.
 
 ## Technical Root Cause Analysis

@@ -13,6 +13,7 @@ from contextlib import asynccontextmanager
 import logging
 import os
 import time
+from .config import settings
 
 from app.core.redis_client import redis_client
 from .api.v1 import (
@@ -94,11 +95,22 @@ async def lifespan(app: FastAPI):
     try:
         from .core.supabase_connection_pool import supabase_pool
 
-        await supabase_pool.initialize()
-        logger.info("✅ Supabase connection pool initialized")
+        if settings.supabase_url:
+            await supabase_pool.initialize()
+            logger.info("✅ Supabase connection pool initialized")
+        else:
+            logger.info("ℹ️ Supabase URL not set - skipping connection pool (Running in Challenge Mode)")
     except Exception as e:
-        logger.error(f"❌ Supabase connection pool initialization failed: {e}")
+        logger.warning(f"⚠️ Supabase connection pool initialization skipped: {e}")
         # Continue startup - fallback to direct connections
+
+    # Initialize Custom Database Pool
+    try:
+        from .core.database_pool import db_pool
+        await db_pool.initialize()
+        logger.info("✅ Custom Database connection pool initialized")
+    except Exception as e:
+        logger.error(f"❌ Custom Database pool initialization failed: {e}")
 
     # Initialize Redis connection with timeout
     try:

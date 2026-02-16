@@ -321,6 +321,11 @@ class SupabaseConnectionPool:
         if self._initialized:
             return
             
+        if not settings.supabase_url:
+            logger.info("Supabase URL not set - skipping pool initialization")
+            self._initialized = True # Mark as initialized to prevent repeated attempts
+            return
+
         try:
             logger.info(f"Initializing Supabase connection pool with {self.max_connections} connections")
             

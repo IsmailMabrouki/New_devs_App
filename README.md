@@ -16,5 +16,8 @@ For a deep dive into the identified bugs, root cause analysis, and implementatio
 2. **Revenue Accuracy**: Fixed March totals by implementing timezone-aware date filtering and server-side aggregation.
 3. **Financial Precision**: Eliminated penny differences by migrating from floating-point math to string-based high-precision decimal handling.
 
+> [!NOTE]
+> **Out of Scope**: Improvements made to database connection pooling and backend configuration stability were implemented solely for personal verification and to ensure a reliable testing environment. These are not part of the core assessment submission.
+
 ---
 **GitHub Repository**: [IsmailMabrouki/New_devs_App](https://github.com/IsmailMabrouki/New_devs_App)
