@@ -1,5 +1,7 @@
 # Property Revenue Dashboard - Bug Fix Details
 
+**GitHub Repository**: [IsmailMabrouki/New_devs_App](https://github.com/IsmailMabrouki/New_devs_App)
+
 This document provides a detailed explanation of the bugs identified in the Property Revenue Dashboard and the proposed implementation for fixing them.
 
 ## Technical Root Cause Analysis
